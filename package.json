@@ -1,0 +1,14 @@
+{
+  "name": "prisma-panic-demo",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node ./script.js"
+  },
+  "dependencies": {
+    "@prisma/client": "3.8.1"
+  },
+  "devDependencies": {
+    "prisma": "3.8.1"
+  }
+}
