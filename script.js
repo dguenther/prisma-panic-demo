@@ -2,19 +2,27 @@ const { PrismaClient } = require('@prisma/client')
 
 const prisma = new PrismaClient()
 
-async function main() {
-  const id = 111111111111111111111111111111111
+const longId = 1111111111111111111111
+const shortId = 1
+
+async function query(number, id) {
+  console.log(`\nQuery #${number} (id = ${id}):\n`)
 
   await prisma.user.findUnique({
     where: { id },
   });
 }
 
-main()
+query(1, longId)
   .catch((e) => {
     console.error(e)
-    process.exit(1)
   })
-  .finally(async () => {
-    await prisma.$disconnect()
+  .then(() => {
+    return query(2, shortId)
   })
+    .catch((e) => {
+      console.error(e)
+    })
+    .finally(async () => {
+      await prisma.$disconnect()
+    })
